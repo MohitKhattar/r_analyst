@@ -6,7 +6,7 @@ class RApp(TethysAppBase):
     Tethys app class for R app.
     """
 
-    name = 'R app'
+    name = 'R Analyst - Experimental'
     index = 'r_app:home'
     icon = 'r_app/images/icon.gif'
     package = 'r_app'
