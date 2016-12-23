@@ -60,7 +60,7 @@ def scriptRun(request):
         params = parse_code()
 
         context = {'filename': filename,
-                   'filenameNoExtension': filename.lower().split('.r')[0],
+                   'host': request.get_host(),
                    'params': params}
 
     return render(request, 'r_app/scriptRun.html', context)

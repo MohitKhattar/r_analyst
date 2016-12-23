@@ -11,5 +11,4 @@ tethysapp_r_app.egg-info/SOURCES.txt
 tethysapp_r_app.egg-info/dependency_links.txt
 tethysapp_r_app.egg-info/namespace_packages.txt
 tethysapp_r_app.egg-info/not-zip-safe
-tethysapp_r_app.egg-info/requires.txt
 tethysapp_r_app.egg-info/top_level.txt

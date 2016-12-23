@@ -39,7 +39,7 @@ function create_get() {
 
     console.log(params);
 
-    ifr.setAttribute('src', "http://localhost/cgi-bin/R/tethys-scripts/".concat(get_fileName()).concat(params));
+    ifr.setAttribute('src', "http://".concat(get_host()).concat("/cgi-bin/R/tethys-scripts/").concat(get_fileName()).concat(params));
 
     ifr.removeAttribute('hidden');
     document.getElementById('fullscreen').style.visibility = 'visible';
