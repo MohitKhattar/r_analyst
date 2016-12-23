@@ -1,0 +1,29 @@
+{% extends "r_app/base.html" %}
+
+{% block app_content %}
+
+  <h1>Welcome to the R Analyst app!</h1>
+
+  <p>To view/run a script, please click on one on the left bar. </p>
+
+{% endblock %}
+
+{% block app_actions %}
+
+{% endblock %}
+
+{% block app_navigation_items %}
+  {% for filename in scriptNames %}
+    <li style="text-align: center">
+
+        <a href="{% url 'r_app:scriptView' %}?filename={{filename}}"> {{ filename }} </a>
+
+      <!--      <form method="get" action="scriptView/?filname={{filename}}" >
+
+         <button type="submit" id={{filename}} class="btn btn-default" name="filename" value={{filename}}> {{ filename }} </button>
+      </form> -->
+    </li>
+
+    {% endfor %}
+
+{% endblock %}

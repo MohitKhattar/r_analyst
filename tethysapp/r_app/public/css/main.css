@@ -1,0 +1,9 @@
+div.top {clear:both;  position:fixed;   top:110px;  height:35%; width:80%;  text-align:left;
+        overflow:auto;}
+div.bottom {clear:both; position:fixed; bottom:90px;    height:40%; width:80%;  text-align:left;}​
+
+iframe.fullscreen { width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    top: 0;
+                    left: 0;}

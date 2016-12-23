@@ -1,0 +1,99 @@
+{% extends "r_app/home.html" %}
+
+{% block app_title %} R Analyst : {{filename}}{% endblock %}
+
+{% block app_navigation_items %}
+
+    <li>
+        <a href="{% url 'r_app:scriptView' %}?filename={{filename}}">View Script</a>
+    </li>
+
+
+    <li class="active">
+        <a href="">Run Script</a>
+    </li>
+
+{% endblock %}
+
+{% load staticfiles %}
+
+{% block app_content %}
+
+
+    <div class="top">
+
+        <h5>Specify Parameters:</h5>
+
+
+        <!-- does not check for no parameters at the moment -->
+
+        <form method="get" action="" id="get-form" style="vertical-align:middle; height:80%; width:90%">
+
+            {% for param, attr in params.items %}
+                <br>
+
+                <label for={{param}} style="padding: 10px;">{{ attr.name }}</label>
+                <input type="text" id={{param}} title={{param}} placeholder="default: {{ attr.value }}" style="width:20%">
+
+            {% endfor %}
+
+            <br>
+            <input type="submit" class="btn btn-default" id="run" value="Run Script" style="float:right; vertical-align: bottom">
+
+        </form>
+
+    </div>
+
+    <div class="bottom" id="bottom">
+
+        <iframe id="output" src="" hidden
+                style="width:90%; height:100%"></iframe>
+
+            <img id="fullscreen" src="{% static 'r_app/images/fullscreen.png' %}" onclick="makefullscreen()"
+                 style="width:30px; height:30px; display: inline-block; vertical-align: top; visibility: hidden;
+                 cursor: pointer;">
+
+    </div>
+
+
+{% endblock %}
+
+{% block app_actions %}
+
+    <a class="btn btn-default" href="{% url 'r_app:home' %}">Home</a>
+
+{% endblock %}
+
+{% block scripts %}
+  {{ block.super }}
+
+    <!-- Including JavaScript here because functions require access to Django context variables -->
+    <script type="text/javascript">
+            function create_paramStr() {
+                var params = '?';
+            {% for param in params %}
+
+                if(params != '?')
+                {
+                    params = params.concat('&');
+                }
+
+                var val = $('#{{param}}').val();
+
+                params = params.concat('{{param}}=');
+                params = params.concat(val);
+
+            {% endfor %}
+
+                return params;
+            }
+
+            function get_fileName()
+            {
+                return '{{filenameNoExtension}}';
+            }
+    </script>
+
+{% endblock %}
+
+

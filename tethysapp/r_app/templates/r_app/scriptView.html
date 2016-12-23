@@ -1,0 +1,34 @@
+{% extends "r_app/home.html" %}
+
+
+{% block app_title %} R Analyst : {{filename}}{% endblock %}
+
+{% block app_navigation_items %}
+
+    <li class="active">
+        <a href="">View Script</a>
+    </li>
+
+
+    <li>
+        <a href="{% url 'r_app:scriptRun' %}?filename={{filename}}">Run Script</a>
+    </li>
+
+{% endblock %}
+
+
+
+{% block app_content %}
+
+    <pre><code>{{code}}</code></pre>
+
+    <a class="btn btn-default" href="{% url 'r_app:scriptRun' %}?filename={{filename}}">Specify Parameters and Run Script</a>
+
+
+{% endblock %}
+
+{% block app_actions %}
+
+    <a class="btn btn-default" href="{% url 'r_app:home' %}">Home</a>
+
+{% endblock %}
