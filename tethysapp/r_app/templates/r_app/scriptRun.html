@@ -33,7 +33,17 @@
                 <br>
 
                 <label for={{param}} style="padding: 10px;">{{ attr.name }}</label>
-                <input type="text" id={{param}} title={{param}} placeholder="default: {{ attr.value }}" style="width:20%">
+
+                {% if attr.type == 'number' %}
+                    <input type="number" id={{param}} title={{param}} placeholder="default: {{ attr.value }}" style="width:20%">
+
+                {% elif attr.type == 'date' %}
+                    <input type="date" id={{param}} title={{param}} placeholder="default: {{ attr.value }}" style="width:20%">
+
+                {% else %}
+                    <input type="text" id={{param}} title={{param}} placeholder="default: {{ attr.value }}" style="width:20%">
+
+                {% endif %}
 
             {% endfor %}
 
@@ -95,7 +105,16 @@
 
             function get_host()
             {
-                return '{{host}}'
+                var host = '{{request.META.HTTP_HOST}}';
+
+                if (host.split(':')[0] == 'localhost')
+                {
+                    return 'localhost';
+                }
+
+                return host;
+
+
             }
     </script>
 

@@ -133,8 +133,10 @@ def parse_code():
 
             # set attribute name
             params[key]['name'] = param_name
+            params[key]['type'] = split_doc[2]
 
         except IndexError:  # if documentation for this parameter does not exist
             params[key]['name'] = key
+            params[key]['type'] = "string"
 
     return params
