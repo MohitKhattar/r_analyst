@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
+from collections import OrderedDict
 
 import os
 import model
@@ -94,8 +95,7 @@ def parse_code():
     declaration = r_model.code[index:r_model.code.find(')')]
     split_code = [x.strip() for x in declaration.split(',')]
 
-    params = {}
-
+    params = OrderedDict()
 
     for string in split_code:
 
@@ -138,5 +138,7 @@ def parse_code():
         except IndexError:  # if documentation for this parameter does not exist
             params[key]['name'] = key
             params[key]['type'] = "string"
+
+    print params
 
     return params
